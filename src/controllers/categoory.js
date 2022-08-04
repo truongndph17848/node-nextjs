@@ -10,3 +10,14 @@ export const create = async (req, res) =>{
         })
     }
 }
+
+export const list = async ( req, res) => {
+    try {
+        const categories = await Category.find().exec();
+        res.json(categories)
+    } catch (error) {
+        res.status(400).json({
+            message: "Không tìm được sản phẩm"
+        })
+    }
+}
