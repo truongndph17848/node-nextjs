@@ -21,3 +21,14 @@ export const list = async (req, res) => {
         })
     }
 }
+export const read = async (req, res) => {
+    const filter = { _id: req.params.id }
+    try {
+        const product = await Product.findOne(filter);
+        res.json(product);
+    } catch (error) {
+        res.status(400).json({
+            message: "Không hiển thị được sản phẩm"
+        })
+    }
+}
