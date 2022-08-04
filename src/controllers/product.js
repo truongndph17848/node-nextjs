@@ -32,3 +32,17 @@ export const read = async (req, res) => {
         })
     }
 }
+export const remove = async (req, res) => {
+    const filter = { _id: req.params.id }
+    try {
+        const product = await Product.findByIdAndDelete(filter);
+        res.json({
+            message: "Đã xóa thành công",
+            data: product
+        });
+    } catch (error) {
+        res.status(400).json({
+            message: "Không hiển thị được sản phẩm"
+        })
+    }
+}
