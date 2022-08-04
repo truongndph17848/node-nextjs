@@ -34,7 +34,32 @@ export const remove = async ( req, res) => {
     }
 }
 
+export const read = async ( req, res) => {
+    const condition = {_id: req.params.id}
+    try {
+        const category = await Category.findOne(condition).exec();
+        const products = await Product.find({category}).select("-category").exec();
+        res.json({
+            category,
+            products
+        })
+    } catch (error) {
+        res.status(400).json({
+            message: "Không tìm được sản phẩm"
+        })
+    }
+}
 
+export const update = async ( req, res) => {
+    const condition = { _id: req.params.id};
+    const document = req.body;
+    const options = { new: true}
+    try {
+        const category = await Category.findOneAndUpdate(condition, document, options).exec();
+        res.json(category)
+    } catch (error) {
+        res.status(400).json({
+            message: "Cập nhật sản phẩm thất bại"
         })
     }
 }
