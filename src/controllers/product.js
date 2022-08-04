@@ -46,3 +46,16 @@ export const remove = async (req, res) => {
         })
     }
 }
+export const update = async (req, res) => {
+    const conditon = { _id: req.params.id }
+    const docment = req.body
+    const option = { new: true } // Cập nhật dữ liệu mới từ cailent gửi nên
+    try {
+        const product = await Product.findOneAndUpdate(conditon, docment, option);
+        res.json(product);
+    } catch (error) {
+        res.status(400).json({
+            message: "Không hiển thị được sản phẩm"
+        })
+    }
+}
