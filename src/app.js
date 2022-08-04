@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
 import productRoute from './routes/product'
+import categoryRoute from './routes/category'
 
 const app = express()
 
@@ -11,6 +12,7 @@ app.use(express.json())
 
 // routes
 app.use("/api",productRoute)
+app.use("/api",categoryRoute)
 
 //connect db
 const urlMong = "mongodb+srv://dung:dung27082002@cluster0.qfdt7gw.mongodb.net/api_ass_next?retryWrites=true&w=majority"
