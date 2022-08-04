@@ -33,3 +33,19 @@ export const remove = async ( req, res) => {
         })
     }
 }
+
+export const read = async ( req, res) => {
+    const condition = {_id: req.params.id}
+    try {
+        const category = await Category.findOne(condition).exec();
+        const products = await Product.find({category}).select("-category").exec();
+        res.json({
+            category,
+            products
+        })
+    } catch (error) {
+        res.status(400).json({
+            message: "Không tìm được sản phẩm"
+        })
+    }
+}
