@@ -21,3 +21,15 @@ export const list = async ( req, res) => {
         })
     }
 }
+
+export const remove = async ( req, res) => {
+    const condition = { _id: req.params.id};
+    try {
+        const categories = await Category.findOneAndDelete(condition).exec();
+        res.json(categories)
+    } catch (error) {
+        res.status(400).json({
+            message: "Xóa sản phẩm thất bại"
+        })
+    }
+}
