@@ -59,3 +59,14 @@ export const update = async (req, res) => {
         })
     }
 }
+export const search = async (req, res) => {
+    const SearchString = req.query.q ? req.query.q : ""
+    try {
+        const result = await Product.find( { $text: { $search: SearchString } } ).exec()
+        res.json(result)
+    } catch (error) {
+        res.status(400).json({
+            message: "Lỗi không tìm được sản phẩm"
+        })
+    }
+}

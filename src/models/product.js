@@ -24,5 +24,5 @@ const ProductSchema = new Schema({
         ref: "Category"
     }
 }, { timestamps: true })
-
+ProductSchema.index({'$**': 'text'})
 export default mongoose.model("Product", ProductSchema)
