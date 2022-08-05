@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import morgan from "morgan";
 import productRoute from './routes/product'
 import categoryRoute from './routes/category'
-
+import authRoute from './routes/auth'
 const app = express()
 
 //middeware
@@ -13,6 +13,8 @@ app.use(express.json())
 // routes
 app.use("/api",productRoute)
 app.use("/api",categoryRoute)
+app.use("/api",authRoute)
+
 
 //connect db
 const urlMong = "mongodb+srv://dung:dung27082002@cluster0.qfdt7gw.mongodb.net/api_ass_next?retryWrites=true&w=majority"
