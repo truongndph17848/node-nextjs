@@ -3,11 +3,11 @@ import { create, list, read, remove, search, update } from "../controllers/produ
 
 const router = Router()
 
-router.post("/product", create)
-router.get("/product", list)
-router.get("/product/:id", read)
-router.delete("/product/:id", remove)
-router.put("/product/:id", update)
+router.post("/products", create)
+router.get("/products", list)
+router.get("/products/:id", read)
+router.delete("/products/:id", remove)
+router.put("/products/:id", update)
 router.post("/search", search)
 
 export default router
