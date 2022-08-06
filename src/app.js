@@ -1,12 +1,14 @@
 import express from "express";
 import mongoose from "mongoose";
 import morgan from "morgan";
+import cors from "cors"
 import productRoute from './routes/product'
 import categoryRoute from './routes/category'
 import authRoute from './routes/auth'
 const app = express()
 
 //middeware
+app.use(cors())
 app.use(morgan('tiny'))
 app.use(express.json())
 
