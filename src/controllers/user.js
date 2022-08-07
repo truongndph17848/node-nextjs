@@ -1,7 +1,3 @@
-import { response } from "express";
-import { request } from "express";
-import res from "express/lib/response";
-import products from "../models/products";
 import User from "../models/auth";
 export const useById = async (request,response,next,id) => {
     try {
